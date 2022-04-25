@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:taxion/screens/widgets/recovery.dart';
 import '/theme.dart';
 import '/widgets/snackbar.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class AccountRecovery extends StatefulWidget {
+  const AccountRecovery({Key? key}) : super(key: key);
 
   @override
-  _SignInState createState() => _SignInState();
+  _AccountRecoveryState createState() => _AccountRecoveryState();
 }
 
-class _SignInState extends State<SignIn> {
+class _AccountRecoveryState extends State<AccountRecovery> {
   TextEditingController loginEmailController = TextEditingController();
-  TextEditingController loginPasswordController = TextEditingController();
 
   final FocusNode focusNodeEmail = FocusNode();
-  final FocusNode focusNodePassword = FocusNode();
 
-  bool _obscureTextPassword = true;
+  //bool _obscureTextPassword = true;
 
   @override
   void dispose() {
     focusNodeEmail.dispose();
-    focusNodePassword.dispose();
     super.dispose();
   }
 
@@ -34,6 +30,30 @@ class _SignInState extends State<SignIn> {
         padding: const EdgeInsets.only(top: 23.0, bottom: 10.0),
         child: Column(
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 75.0),
+              child: Image(
+                  height:
+                      MediaQuery.of(context).size.height > 800 ? 191.0 : 150,
+                  fit: BoxFit.fill,
+                  image: const AssetImage('assets/brand.png')),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            const DefaultTextStyle(
+              style: TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.w700,
+                color: Colors.black,
+              ),
+              child: Text(
+                'Account Recovery',
+              ),
+            ),
+            const SizedBox(
+              height: 8.0,
+            ),
             Stack(
               alignment: Alignment.topCenter,
               children: <Widget>[
@@ -73,7 +93,7 @@ class _SignInState extends State<SignIn> {
                                   fontSize: 17.0),
                             ),
                             onSubmitted: (_) {
-                              focusNodePassword.requestFocus();
+                              focusNodeEmail.requestFocus();
                             },
                           ),
                         ),
@@ -81,45 +101,6 @@ class _SignInState extends State<SignIn> {
                           width: 250.0,
                           height: 1.0,
                           color: Colors.grey[400],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                          child: TextField(
-                            focusNode: focusNodePassword,
-                            controller: loginPasswordController,
-                            obscureText: _obscureTextPassword,
-                            style: const TextStyle(
-                                fontFamily: 'WorkSansSemiBold',
-                                fontSize: 16.0,
-                                color: Colors.black),
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              icon: const Icon(
-                                FontAwesomeIcons.lock,
-                                size: 22.0,
-                                color: Colors.black,
-                              ),
-                              hintText: 'Password',
-                              hintStyle: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold',
-                                  fontSize: 17.0),
-                              suffixIcon: GestureDetector(
-                                onTap: _toggleLogin,
-                                child: Icon(
-                                  _obscureTextPassword
-                                      ? FontAwesomeIcons.eye
-                                      : FontAwesomeIcons.eyeSlash,
-                                  size: 15.0,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            onSubmitted: (_) {
-                              _toggleSignInButton();
-                            },
-                            textInputAction: TextInputAction.go,
-                          ),
                         ),
                       ],
                     ),
@@ -158,7 +139,7 @@ class _SignInState extends State<SignIn> {
                       padding: EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 42.0),
                       child: Text(
-                        'LOGIN',
+                        'SEND',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
@@ -167,33 +148,12 @@ class _SignInState extends State<SignIn> {
                     ),
                     onPressed: () => CustomSnackBar(
                       // ignore: todo
-                      //TODO: implement Home Screen After Login Press
-                      context, const Text('Login button pressed'),
+                      //TODO: implement Recovery Screen function
+                      context, const Text('Recovery button pressed'),
                     ),
                   ),
                 )
               ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AccountRecovery(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'Forgot Password?',
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontFamily: 'WorkSansMedium'),
-                ),
-              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
@@ -215,16 +175,6 @@ class _SignInState extends State<SignIn> {
                     width: 100.0,
                     height: 1.0,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                    child: Text(
-                      'Or',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                          fontFamily: 'WorkSansMedium'),
-                    ),
-                  ),
                   Container(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
@@ -243,60 +193,9 @@ class _SignInState extends State<SignIn> {
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, right: 40.0),
-                  child: GestureDetector(
-                    onTap: () => CustomSnackBar(
-                        context, const Text('Facebook button pressed')),
-                    child: Container(
-                      padding: const EdgeInsets.all(15.0),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                      child: const Icon(
-                        FontAwesomeIcons.facebookF,
-                        color: Color(0xFF0084ff),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: GestureDetector(
-                    onTap: () => CustomSnackBar(
-                        context, const Text('Google button pressed')),
-                    child: Container(
-                      padding: const EdgeInsets.all(15.0),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                      child: const Icon(
-                        FontAwesomeIcons.google,
-                        color: Color(0xFF0084ff),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
       ),
     );
-  }
-
-  void _toggleSignInButton() {
-    CustomSnackBar(context, const Text('Login button pressed'));
-  }
-
-  void _toggleLogin() {
-    setState(() {
-      _obscureTextPassword = !_obscureTextPassword;
-    });
   }
 }

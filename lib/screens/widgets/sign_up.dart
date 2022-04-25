@@ -78,7 +78,8 @@ class _SignUpState extends State<SignUp> {
                               ),
                               hintText: 'Name',
                               hintStyle: TextStyle(
-                                  fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
+                                  fontFamily: 'WorkSansSemiBold',
+                                  fontSize: 16.0),
                             ),
                             onSubmitted: (_) {
                               focusNodeEmail.requestFocus();
@@ -110,7 +111,8 @@ class _SignUpState extends State<SignUp> {
                               ),
                               hintText: 'Email Address',
                               hintStyle: TextStyle(
-                                  fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
+                                  fontFamily: 'WorkSansSemiBold',
+                                  fontSize: 16.0),
                             ),
                             onSubmitted: (_) {
                               focusNodePassword.requestFocus();
@@ -142,7 +144,8 @@ class _SignUpState extends State<SignUp> {
                               ),
                               hintText: 'Password',
                               hintStyle: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
+                                  fontFamily: 'WorkSansSemiBold',
+                                  fontSize: 16.0),
                               suffixIcon: GestureDetector(
                                 onTap: _toggleSignup,
                                 child: Icon(
@@ -184,7 +187,8 @@ class _SignUpState extends State<SignUp> {
                               ),
                               hintText: 'Confirmation',
                               hintStyle: const TextStyle(
-                                  fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
+                                  fontFamily: 'WorkSansSemiBold',
+                                  fontSize: 16.0),
                               suffixIcon: GestureDetector(
                                 onTap: _toggleSignupConfirm,
                                 child: Icon(
@@ -237,8 +241,8 @@ class _SignUpState extends State<SignUp> {
                     splashColor: CustomTheme.loginGradientEnd,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 42.0),
                       child: Text(
                         'SIGN UP',
                         style: TextStyle(

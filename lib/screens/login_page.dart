@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage>
                 tileMode: TileMode.clamp),
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.max,            
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 75.0),
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage>
                     height:
                         MediaQuery.of(context).size.height > 800 ? 191.0 : 150,
                     fit: BoxFit.fill,
-                    image: const AssetImage('assets/img/login_logo.png')),
+                    image: const AssetImage('assets/brand.png')),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),

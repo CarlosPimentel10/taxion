@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:flutter/services.dart';
+import 'package:taxion/screens/login_page.dart';
+import 'screens/login_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(const Taxion());
 }
 
@@ -10,10 +18,10 @@ class Taxion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Taxion',
-      home: const Home(title: 'Taxion'),
+      home: LoginPage(),
     );
   }
 }
-

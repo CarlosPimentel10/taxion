@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:taxion/screens/widgets/recovery.dart';
+import '../menu_page.dart';
 import '/theme.dart';
 import '/widgets/snackbar.dart';
 
@@ -165,13 +166,20 @@ class _SignInState extends State<SignIn> {
                             fontFamily: 'WorkSansBold'),
                       ),
                     ),
-                    onPressed: () => CustomSnackBar(
+                    onPressed: () {
                       // ignore: todo
                       //TODO: implement Home Screen After Login Press
-                      context, const Text('Login button pressed'),
-                    ),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Menu(
+                            title: 'Taxion',
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                )
+                ),
               ],
             ),
             Padding(
